@@ -14,7 +14,7 @@ import '../components/recommendation_list_component.dart';
 class MovieDetailScreen extends StatelessWidget {
   final int id;
   //movie detail screen needs the id of the movie
-
+  
   const MovieDetailScreen({super.key, required this.id});
 
   @override

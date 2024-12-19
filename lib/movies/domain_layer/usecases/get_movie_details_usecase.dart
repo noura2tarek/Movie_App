@@ -15,8 +15,6 @@ class GetMovieDetailsUseCase extends BaseUseCase<MovieDetails, MovieDetailsParam
   Future<Either<Failure, MovieDetails>> call(MovieDetailsParameters parameters) async {
     return await baseMoviesRepository.getMovieDetails(parameters);
   }
-
-
 }
 
 class MovieDetailsParameters extends Equatable {
@@ -26,6 +24,4 @@ class MovieDetailsParameters extends Equatable {
 
   @override
   List<Object> get props => [movieId];
-
 }
-
