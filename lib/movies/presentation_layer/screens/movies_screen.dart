@@ -16,7 +16,10 @@ class MoviesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     //print(build);
     return BlocProvider(
-      create: (context) => sl<MoviesBloc>()..add(GetNowPlayingMoviesEvent())..add(GetPopularMoviesEvent())..add(GetTopRatedMoviesEvent()),
+      create: (context) =>
+      sl<MoviesBloc>()
+        ..add(GetNowPlayingMoviesEvent())..add(GetPopularMoviesEvent())..add(
+          GetTopRatedMoviesEvent()),
       child: Scaffold(
         body: SingleChildScrollView(
           key: const Key(AppStrings.movieScrollViewKey),
@@ -47,7 +50,8 @@ class MoviesScreen extends StatelessWidget {
                         padding: EdgeInsets.all(8.0),
                         child: Row(
                           children: [
-                            Text(AppStrings.seeMore, style: TextStyle(color: Colors.white),),
+                            Text(AppStrings.seeMore,
+                              style: TextStyle(color: Colors.white),),
                             Icon(
                               Icons.arrow_forward_ios,
                               size: 16.0,
@@ -89,7 +93,8 @@ class MoviesScreen extends StatelessWidget {
                         padding: EdgeInsets.all(8.0),
                         child: Row(
                           children: [
-                            Text(AppStrings.seeMore, style: TextStyle(color: Colors.white),),
+                            Text(AppStrings.seeMore,
+                              style: TextStyle(color: Colors.white),),
                             Icon(
                               Icons.arrow_forward_ios,
                               size: 16.0,
@@ -102,7 +107,7 @@ class MoviesScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              /////////// ****** Top Rated Movies List ******* ///////////////////
+              /////////// ****** Top Rated Movies List ******* ///////////
               const TopRatedComponent(),
               const SizedBox(height: 50.0),
             ],

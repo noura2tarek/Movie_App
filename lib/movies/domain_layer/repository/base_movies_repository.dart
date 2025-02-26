@@ -7,13 +7,15 @@ import 'package:movie_app/movies/domain_layer/usecases/get_movie_recommendation_
 import '../../../core/network/error/failure.dart';
 import '../entities/movie_entities.dart';
 
-abstract class BaseMoviesRepository{
+abstract class BaseMoviesRepository {
+  Future<Either<Failure, List<Movies>>> getNowPlayingMovies(); //abstract method
+  Future<Either<Failure, List<Movies>>> getPopularMovies();
 
-  Future<Either<Failure, List<Movies>>>  getNowPlayingMovies(); //abstract method
-  Future<Either<Failure, List<Movies>>>  getPopularMovies();
-  Future<Either<Failure, List<Movies>>>  getTopRatedMovies();
-  Future<Either<Failure, MovieDetails>>  getMovieDetails(MovieDetailsParameters parameters);
-  Future<Either<Failure, List<Recommendation>>>  getMovieRecommendations(RecommendationParameters parameters);
+  Future<Either<Failure, List<Movies>>> getTopRatedMovies();
 
+  Future<Either<Failure, MovieDetails>> getMovieDetails(
+      MovieDetailsParameters parameters);
 
+  Future<Either<Failure, List<Recommendation>>> getMovieRecommendations(
+      RecommendationParameters parameters);
 }

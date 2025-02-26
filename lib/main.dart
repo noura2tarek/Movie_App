@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: AppStrings.appName,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.grey.shade900 ),
+      theme: ThemeData.dark()
+          .copyWith(scaffoldBackgroundColor: Colors.grey.shade900),
       home: const MoviesScreen(),
     );
   }
 }
-

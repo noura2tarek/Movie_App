@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+
 class MovieDetailTestScreen extends StatelessWidget {
   const MovieDetailTestScreen({super.key});
 

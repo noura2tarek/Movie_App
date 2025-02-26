@@ -18,7 +18,7 @@ class NowPlayingComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc, MoviesStates>(
       buildWhen: (previous, current) =>
-          previous.nowPlayingState != current.nowPlayingState,
+      previous.nowPlayingState != current.nowPlayingState,
       builder: (context, state) {
         //print("BlocBuilder NowPlayingComponent");
 
@@ -39,9 +39,10 @@ class NowPlayingComponent extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MovieDetailScreen(
-                            id: item.id,
-                          ),
+                          builder: (context) =>
+                              MovieDetailScreen(
+                                id: item.id,
+                              ),
                         ));
                   },
                   child: Stack(
@@ -66,20 +67,23 @@ class NowPlayingComponent extends StatelessWidget {
                         blendMode: BlendMode.dstIn,
                         child: CachedNetworkImage(
                           height: 560.0,
-                          imageUrl: (item.backdropPath != null) ? ApiConstants.imageUrl(item.backdropPath!) : AppStrings.defaultNetworkImage,
+                          imageUrl: (item.backdropPath != null) ? ApiConstants
+                              .imageUrl(item.backdropPath!) : AppStrings
+                              .defaultNetworkImage,
                           fit: BoxFit.cover,
-                          placeholder: (context, url) => Shimmer.fromColors(
-                            baseColor: Colors.grey[850]!,
-                            highlightColor: Colors.grey[800]!,
-                            child: Container(
-                              height: 560.0,
-                              width: 200.0,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade700,
-                                borderRadius: BorderRadius.circular(8.0),
+                          placeholder: (context, url) =>
+                              Shimmer.fromColors(
+                                baseColor: Colors.grey[850]!,
+                                highlightColor: Colors.grey[800]!,
+                                child: Container(
+                                  height: 560.0,
+                                  width: 200.0,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade700,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
                           errorWidget: (context, url, error) =>
                           const Icon(Icons.error),
                         ),
@@ -131,8 +135,6 @@ class NowPlayingComponent extends StatelessWidget {
             ).toList(),
           ),
         );
-
-
       },
     );
   }
