@@ -14,24 +14,26 @@ abstract class BaseMovieRemoteDataSource {
   Future<List<MovieModel>> getPopularMovies();
 
   Future<List<MovieModel>> getTopRatedMovies();
+
   Future<MovieDetailsModel> getMovieDetails(MovieDetailsParameters parameters);
-  ///
-  Future<List<RecommendationModel>> getMovieRecommendation(RecommendationParameters parameters);
 
-
+  Future<List<RecommendationModel>> getMovieRecommendation(
+      RecommendationParameters parameters);
 }
 
 class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
+  // Write concrete implementation
   @override
   Future<List<MovieModel>> getNowPlayingMovies() async {
     final response = await Dio().get(ApiConstants.nowPlayingMoviesPath);
 
     if (response.statusCode == 200) {
-      return List<MovieModel>.from((response.data["results"] as List)
-          .map((e) => MovieModel.fromJson(e)),
+      return List<MovieModel>.from(
+        (response.data["results"] as List).map((e) => MovieModel.fromJson(e)),
       );
-    }else{ 
-      throw ServerException(errorMessageModel: ErrorMessageModel.fromJson(response.data));
+    } else {
+      throw ServerException(
+          errorMessageModel: ErrorMessageModel.fromJson(response.data));
     }
   }
 
@@ -40,13 +42,13 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
     final response = await Dio().get(ApiConstants.popularMoviesPath);
 
     if (response.statusCode == 200) {
-      return List<MovieModel>.from((response.data["results"] as List)
-          .map((e) => MovieModel.fromJson(e)),
+      return List<MovieModel>.from(
+        (response.data["results"] as List).map((e) => MovieModel.fromJson(e)),
       );
-    }else{
-      throw ServerException(errorMessageModel: ErrorMessageModel.fromJson(response.data));
+    } else {
+      throw ServerException(
+          errorMessageModel: ErrorMessageModel.fromJson(response.data));
     }
-
   }
 
   @override
@@ -54,36 +56,41 @@ class MovieRemoteDataSource extends BaseMovieRemoteDataSource {
     final response = await Dio().get(ApiConstants.topRatedMoviesPath);
 
     if (response.statusCode == 200) {
-      return List<MovieModel>.from((response.data["results"] as List)
-          .map((e) => MovieModel.fromJson(e)),
+      return List<MovieModel>.from(
+        (response.data["results"] as List).map((e) => MovieModel.fromJson(e)),
       );
-    } else{
-      throw ServerException(errorMessageModel: ErrorMessageModel.fromJson(response.data));
+    } else {
+      throw ServerException(
+          errorMessageModel: ErrorMessageModel.fromJson(response.data));
     }
-
   }
 
   @override
-  Future<MovieDetailsModel> getMovieDetails(MovieDetailsParameters parameters) async{
-    final response = await Dio().get(ApiConstants.movieDetailsPath(parameters.movieId));
+  Future<MovieDetailsModel> getMovieDetails(
+      MovieDetailsParameters parameters) async {
+    final response =
+        await Dio().get(ApiConstants.movieDetailsPath(parameters.movieId));
 
     if (response.statusCode == 200) {
-      
       return MovieDetailsModel.fromJson(response.data);
-    } else{
-      throw ServerException(errorMessageModel: ErrorMessageModel.fromJson(response.data));
+    } else {
+      throw ServerException(
+          errorMessageModel: ErrorMessageModel.fromJson(response.data));
     }
   }
 
   @override
-  Future<List<RecommendationModel>> getMovieRecommendation(RecommendationParameters parameters) async{
-    final response = await Dio().get(ApiConstants.movieRecommendationPath(parameters.movieId));
+  Future<List<RecommendationModel>> getMovieRecommendation(
+      RecommendationParameters parameters) async {
+    final response = await Dio()
+        .get(ApiConstants.movieRecommendationPath(parameters.movieId));
 
     if (response.statusCode == 200) {
-
-      return List<RecommendationModel>.from((response.data["results"] as List).map((e) => RecommendationModel.fromJson(e)));
-    } else{
-      throw ServerException(errorMessageModel: ErrorMessageModel.fromJson(response.data));
+      return List<RecommendationModel>.from((response.data["results"] as List)
+          .map((e) => RecommendationModel.fromJson(e)));
+    } else {
+      throw ServerException(
+          errorMessageModel: ErrorMessageModel.fromJson(response.data));
     }
   }
 }

@@ -14,7 +14,8 @@ class MoviesRepository extends BaseMoviesRepository {
 
   MoviesRepository(this.baseMovieRemoteDataSource);
 
-  // make the concrete implementation of base repository methods by calling the methods in datasource
+  // Make the concrete implementation of base repository methods
+  // by calling the methods in datasource
   @override
   Future<Either<Failure, List<Movies>>> getNowPlayingMovies() async {
     final result = await baseMovieRemoteDataSource.getNowPlayingMovies();
