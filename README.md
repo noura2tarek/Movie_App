@@ -14,7 +14,7 @@ Manages state using BLoC State Management (Flutter Bloc) and Dependency Injectio
   Screen.
 - Shows Movies Recommendations list in Movie Details Screen.
 - Flexible Scrolling using Custom Scroll View.
-- Enhance user experience by adding animations and shimmer loading in the UI design.
+- Enhance user experience by adding animations and shimmer effect in the UI design.
 
 ------------------------------------
 # State Management
@@ -47,7 +47,7 @@ mapping the use cases to the UI.
 
 The application has a user-friendly UI with a clean design and animations.
 
-- **Custom Scrolling**: Implemented **custom scroll view** to allow more flexibility in scrolling.
+- **Custom Scrolling**: Implemented using custom scroll view to allow more flexibility in scrolling.
 - **Shimmer Loading Placeholder**: Using the shimmer package to display a sleek loading effect
   while images load via **cached_network_image**, providing a smooth and polished UI during data
   fetches.
