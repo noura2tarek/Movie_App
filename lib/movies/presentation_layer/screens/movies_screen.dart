@@ -14,7 +14,6 @@ class MoviesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //print(build);
     return BlocProvider(
       create: (context) =>
       sl<MoviesBloc>()

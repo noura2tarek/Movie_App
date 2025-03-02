@@ -13,7 +13,8 @@ import '../components/recommendation_list_component.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   final int id;
-  //movie detail screen needs the id of the movie
+
+  // Movie details screen needs the id of the movie
 
   const MovieDetailScreen({super.key, required this.id});
 
@@ -89,7 +90,9 @@ class MovieDetailContent extends StatelessWidget {
                     ),
                   ),
                 ),
+                // Sliver to box adapter
                 SliverToBoxAdapter(
+                  // Column with Fade in up animation
                   child: FadeInUp(
                     from: 20,
                     duration: const Duration(milliseconds: 500),
@@ -98,12 +101,14 @@ class MovieDetailContent extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(state.movieDetails!.title,
-                              style: GoogleFonts.poppins(
-                                fontSize: 23,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 1.2,
-                              )),
+                          Text(
+                            state.movieDetails!.title,
+                            style: GoogleFonts.poppins(
+                              fontSize: 23,
+                              fontWeight: FontWeight.w700,
+                              letterSpacing: 1.2,
+                            ),
+                          ),
                           const SizedBox(height: 8.0),
                           Row(
                             children: [
@@ -154,6 +159,7 @@ class MovieDetailContent extends StatelessWidget {
                                 ],
                               ),
                               const SizedBox(width: 16.0),
+                              // Movie time duration
                               Text(
                                 _showDuration(state.movieDetails!.runTime),
                                 style: const TextStyle(
@@ -166,6 +172,7 @@ class MovieDetailContent extends StatelessWidget {
                             ],
                           ),
                           const SizedBox(height: 20.0),
+                          // Movie overview
                           Text(
                             state.movieDetails!.overview,
                             style: const TextStyle(
@@ -175,7 +182,7 @@ class MovieDetailContent extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 8.0),
-                           Text(
+                          Text(
                             '${AppStrings.genres} ${_showGenres(state.movieDetails!.genres)}',
                             style: const TextStyle(
                               color: Colors.white70,
@@ -190,7 +197,7 @@ class MovieDetailContent extends StatelessWidget {
                   ),
                 ),
 
-                //****** More like this text //
+                //------- More like this text -------//
                 SliverPadding(
                   padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 24.0),
                   sliver: SliverToBoxAdapter(
@@ -198,7 +205,7 @@ class MovieDetailContent extends StatelessWidget {
                       from: 20,
                       duration: const Duration(milliseconds: 500),
                       child: Text(
-                          AppStrings.moreLikeThis.toUpperCase(),
+                        AppStrings.moreLikeThis.toUpperCase(),
                         style: const TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.w500,
@@ -224,8 +231,7 @@ class MovieDetailContent extends StatelessWidget {
     );
   }
 
-
-  //functions
+  //----------------- Functions ------------------///
   String _showGenres(List<Genres> genres) {
     String result = '';
     for (var genre in genres) {
@@ -249,6 +255,4 @@ class MovieDetailContent extends StatelessWidget {
       return '${minutes}m';
     }
   }
-
-
 }
